@@ -1,0 +1,101 @@
+% STEP 1: Choose oneside or twoside. Use the 'draft' option a lot when writing.
+\documentclass[english, twoside]{HYthesis}
+
+\usepackage[utf8]{inputenc} % For UTF8 support. Use UTF8 when saving your file.
+\usepackage{lmodern} % Font package
+\usepackage{textcomp}
+\usepackage[pdftex]{color, graphicx} % For pdf output and jpg/png graphics
+\usepackage[pdftex, plainpages=false]{hyperref} % For hyperlinks and pdf metadata
+\usepackage{fancyhdr} % For nicer page headers
+%\usepackage{tikz} % For making vector graphics (hard to learn but powerful)
+%\usepackage{wrapfig} % For nice text-wrapping figures (use at own discretion)
+\usepackage{amsmath, amssymb, amsthm} % For better math
+%\usepackage[round]{natbib} % For bibliography
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage[footnotesize,bf]{caption} % For more control over figure captions
+\usepackage{subfiles}
+
+\graphicspath{{images/}}
+
+\fussy % Probably not needed but you never know...
+
+\hypersetup{
+    unicode=true,           % to show non-Latin characters in Acrobat's bookmarks
+    pdftoolbar=true,        % show Acrobat's toolbar?
+    pdfmenubar=true,        % show Acrobat's menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={},            % title
+    pdfauthor={},           % author
+    pdfsubject={},          % subject of the document
+    pdfcreator={},          % creator of the document
+    pdfproducer={pdfLaTeX}, % producer of the document
+    pdfkeywords={Category theory} {abstraction} {Haskell}, % list of keywords for
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=black,        % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+%Sets of numbers:
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+
+% Cat symbols
+\newcommand{\A}{\mathscr{A}}
+\newcommand{\B}{\mathscr{B}}
+\newcommand{\C}{\mathscr{C}}
+
+%Operators
+\DeclareMathOperator{\ob}{ob}
+
+%Theorems, lemmas, examples, ...
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{ex}[equation]{Example}
+\AtEndEnvironment{example}{\qed}
+\theoremstyle{plain}
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{lem}[equation]{Lemma}
+
+\title{Category Theory and Haskell}
+\author{Sergey Ichtchenko}
+\date{\today}
+\level{Bachelor's Thesis}
+\faculty{Faculty of Science}
+\educationprogramme{Bachelor's Programme in Science}
+\address{PL 64 (Gustaf H\"allstr\"omin katu 2a)\\FI-00014}
+\studytrack{Mathematics}
+\supervisors{lect.\,Elfving}
+%\censors{prof.\,Smith}{}
+\depositeplace{}
+\additionalinformation{}
+\numberofpagesinformation{\numberofpages\ pages}
+\classification{}
+\keywords{Category theory, abstraction, Haskell}
+\quoting{``It ain't easy being cheesy'' \\---Mahatama Gandhi}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+TODO
+\end{abstract}
+
+\mytableofcontents
+
+\subfile{sections/ch1.tex}
+
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliography} % This lines adds the bibliography to the ToC
+\bibliographystyle{plain} % Use "apalike' if you want citations in form 'Name, Date'
+\bibliography{thesis, zotero}
+
+
+\end{document}
