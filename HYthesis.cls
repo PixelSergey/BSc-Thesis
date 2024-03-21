@@ -86,7 +86,7 @@
 	\fi
 }
 \defaultsettings
-\setlength{\parindent}{1cm}
+\setlength{\parindent}{0cm}
 \setlength{\parskip}{0pt}
 \pagestyle{myheadings}
 \markright{}

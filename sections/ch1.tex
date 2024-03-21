@@ -15,6 +15,7 @@ Indeed, the goal of category theory is to work on a higher level of abstraction,
 
 \newpage
 \begin{ex}
+\label{ex:three_statements}
 Consider the following statements from three distinct branches of mathematics:
 
 
@@ -64,7 +65,6 @@ One can note that the proofs for associativity and existence of an identity will
 This is because these proofs happen on a low level of abstraction, where details and definitions of mathematical objects are still important.
 The point of category theory is to explore what facts we can prove on this higher level of abstraction.
 Indeed, we will soon see that groups, topological spaces, and vector spaces are all examples of categories, and that the statement ``inverses are unique'' is, in fact, a category-theoretical result.
-
 \qed
 \end{ex}
 
@@ -88,17 +88,61 @@ Such that the following conditions are satisfied:
     \item \textbf{Associativity:} for all $f\in \C(A,B),g\in \C(B,C),h\in \C(C,D)$,\\$h\circ (g\circ f)=(h\circ g)\circ f$
     \item \textbf{Identity:} for all $f\in \C(A,B)$, $f\circ 1_A=1_B\circ f=f$
 \end{itemize}
+
+\qed
 \end{defn}
 
 Note that in the above definition, we refer to the concept of a \textit{class}.
 We use this to refer to any collection of mathematical objects, similar to a \textit{set}.
 However, sets are too restrictive for the purposes of category theory.
 For example, we will later want to define a category where the objects are all the sets, and the morphisms are set-theoretical functions.
-However, it is known that the set of all sets cannot exist, as it contradicts the axioms of set theory.
+However, it is known that the set of all sets cannot exist, as it contradicts the axioms of Zermelo-Fraenkel set theory (ZF).
 On the contrary, it is possible to define traditionally contradictory notions like the class of all sets or even the class of all classes.
 We will not formally define what a class is in this text, as the definition varies widely between different axiomatic frameworks.
-In fact, a class is not even a well-defined object in many cases, such as in Zermelo-Fraenkel set theory.
+In fact, a class is not even a well-defined object in many cases, such as in ZF.
 For the purposes of this thesis we will ignore these details and consider a class to be simply some mathematical object, to which any other mathematical object can belong.
+
+We will now give a few examples of categories that motivate the study of category theory.
+We will see that categories are a very generic concept, and thus the theory that we will develop later has a very fundamental and wide range of applications.
+The first three examples will formalise the intuition we developed in Example \ref{ex:three_statements}.
+
+\begin{ex}
+\label{ex:monoid}
+\textit{A monoid is a category.}
+
+Recall that a monoid is a group without inverses.
+We will prove that for all monoids, we can construct a category with the same properties.
+We will be able to extend this example to prove that any group is a category later, once we have developed enough theory about categories and inverse elements.
+
+Formally, the pair $(G,*)$ is a group iff the following conditions hold:
+\begin{itemize}
+    \item Closure: $\forall a,b\in G$, $a*b\in G$
+    \item Associativity: $\forall a,b,c \in G$, $(a*b)*c=a*(b*c)$
+    \item Identity element: $\exists e\in G$ s.t. $\forall a\in G$, $e*a=a*e=a$
+\end{itemize}
+
+Let us define a new category $\M$ as follows:
+\begin{itemize}
+    \item Let $\ob(\M) = \{A\}$
+    \item Let $\M(A,A) = G$
+    \item Let $1_A=e$
+    \item Define composition as follows: $\forall f,g\in \M(A,A)$, $g\circ f = f*g$
+\end{itemize}
+
+In other words, the class of objects of our category is just a singleton containing a dummy element.
+We also take the class of morphisms to simply be the set $G$.
+We must now make sure that our definition makes sense and satisfies the two axioms of being a category.
+These follow immediately from the definition of a monoid.
+Identity holds as $\forall f\in \M(A,A)$, $1_A \circ f = f*e = f = e*f = f \circ 1_A$.
+Associativity holds as $\forall f,g,h\in \M(A,A)$, $h \circ (g \circ f) = (f*g)*h = f*(g*h) = (h \circ g) \circ f$.
+Hence we have found a representation of our monoid as a category.
+\qed
+\end{ex}
+
+Note that in the above example, we have done a common category-theoretical trick that I will refer to as ``going up one level''.
+Instead of mapping the elements of our monoid to the objects of our category, we instead created a dummy object and mapped the elements of our monoid to the \textit{morphisms} of our category.
+Then, the binary operation was converted into a \textit{composition of morphisms} instead of remaining as a morphism, or function, itself.
+What this does is effectively ``moves us up'' by a level of abstraction: when discussing results in category theory, we generally want to disregard the specifics of what the objects themselves are, and instead focus on just how the morphisms compose with each other.
 
 
 
