@@ -114,7 +114,7 @@ Recall that a monoid is a group without inverses.
 We will prove that for all monoids, we can construct a category with the same properties.
 We will be able to extend this example to prove that any group is a category later, once we have developed enough theory about categories and inverse elements.
 
-Formally, the pair $(G,*)$ is a group iff the following conditions hold:
+Formally, the pair $(G,*)$ is a monoid iff the following conditions hold:
 \begin{itemize}
     \item Closure: $\forall a,b\in G$, $a*b\in G$
     \item Associativity: $\forall a,b,c \in G$, $(a*b)*c=a*(b*c)$
@@ -143,6 +143,29 @@ Note that in the above example, we have done a common category-theoretical trick
 Instead of mapping the elements of our monoid to the objects of our category, we instead created a dummy object and mapped the elements of our monoid to the \textit{morphisms} of our category.
 Then, the binary operation was converted into a \textit{composition of morphisms} instead of remaining as a morphism, or function, itself.
 What this does is effectively ``moves us up'' by a level of abstraction: when discussing results in category theory, we generally want to disregard the specifics of what the objects themselves are, and instead focus on just how the morphisms compose with each other.
+
+\begin{ex}
+\label{ex:topological_space}
+\textit{A topological space is a category.}
+\qed
+\end{ex}
+
+\begin{ex}
+\label{ex:vector_space}
+\textit{A vector space is a category.}
+\qed
+\end{ex}
+
+This gives us an indication as to why Example \ref{ex:three_statements} makes sense.
+We will formally prove the statement in a theorem later.
+
+Here is one final, quite important example of a category.
+
+\begin{ex}
+\label{ex:set}
+\textit{Sets and functions form a category.}
+\qed
+\end{ex}
 
 
 
