@@ -5,6 +5,9 @@ Why does Haskell have stuff named after concepts in category theory?
 And why exactly is a monad a monoid in the category of endofunctors?
 Find out the answers to these questions and more in my BSc thesis!
 
+## Download
+Get the latest (published) version from the [**releases**](https://github.com/PixelSergey/BSc-Thesis/releases/latest/download/thesis.pdf) page.
+
 ## General information
 - **Document:** Bachelor's thesis
 - **Title:** Category Theory and Haskell
