@@ -5,7 +5,23 @@
 
 \chapter{Introduction}
 
-\section{Motivation}
+\section{Aim}
+
+Haskell is a functional programming language, in which the primitive building block is a function.
+This is in contrast to, for example, imperative programming languages, where the building blocks are variables and instructions.
+One of the key ideas in Haskell is that all functions are \textit{pure}; that is, given an input, a function will always return the same output.
+That is, pure functions cannot maintain a state, change the value of external variables or data, or otherwise produce side-effects. 
+Despite this limitation, it is possible to implement ``non-pure'' operations, like printing to the screen, maintaining a state, or reading user input, despite these operations not being pure themselves.
+Interestingly, this is not due to compromises in the implementation of Haskell.
+Rather, it is possible to show that these operations can be implemented in a pure way using a branch of mathematics called category theory.
+
+The aim of this thesis is to explore the formal mathematical notions behind category theory and use them to answer the question of why non-pure functions can, indeed, be implemented in Haskell.
+During this, we will also see that many constructions in Haskell, such as Monads, Monoids, and Functors, are named after topics in category theory \cite{haskmooc}.
+We will show that this is not a coincidence: rather, there is a reasonable correspondence between the abstract category-theoretical concepts and the concrete data structures in Haskell.
+We will see that it is possible to define a formal category \textbf{Hask} of Haskell's types and functions, and that all of the above constructions have a similarly-named equivalent in category theory.
+
+
+\section{Category theory}
 
 Category theory is a branch of mathematics that aims to provide an abstract framework for dealing with function-like objects \cite{bct}.
 We will soon define a \textit{category} as some mathematical structure that has objects, arrows between objects, with some notion of composition and a few reasonable assumptions.
@@ -13,10 +29,9 @@ At first, this definition will seem like it is too broad to reasonably describe 
 After all, the definition will not require the ``arrows'' to be anything specific, such as set-theoretical functions or even functions at all.
 Indeed, the goal of category theory is to work on a higher level of abstraction, ignoring many specific details of mathematical structures and instead proving more general facts that emerge from their properties. This is best explained with an example.
 
-\newpage
 \begin{ex}
 \label{ex:three_statements}
-Consider the following statements from three distinct branches of mathematics:
+Consider the following statements from three distinct branches of mathematics (Table \ref{tab:three_statements}).
 
 
 \begin{table}[h]
@@ -36,7 +51,7 @@ Consider the following statements from three distinct branches of mathematics:
 
 Each of these statements talks about unique inverses in its own specific case.
 One might imagine that the proofs of each of these statements would look very different, as groups, toplogical spaces, and matrices are defined very differently.
-However, let us look at each of the proofs side-by-side:
+However, let us look at each of the proofs side-by-side (Table \ref{tab:three_proofs}).
 
 \begin{table}[h]
     \centering
@@ -58,22 +73,17 @@ The key point to notice in this example is that all three of these examples rely
 Firstly, the operations (binary operation of a group, composition of functions, and matrix multiplication) are all associative operations.
 Secondly, all of these operations have an identity element (or two distinct left and right identities, in the case of the topological spaces). 
 Associativity is used when we exchange the position of braces in the proofs, while the identity is used to introduce and then remove each of the inverse elements.
+\qed
+\end{ex}
 
-This example gives an indication that we are working on the wrong level of abstraction.
+Example \ref{ex:three_statements} gives an indication that we are working on the wrong level of abstraction.
 The proof of the statement ``inverses are unique'' happens on a higher level, where the details of each mathematical structure are not so important, while emergent properties, such as associativity and identities, are critical.
 One can note that the proofs for associativity and existence of an identity will vary wildly between the three presented branches of mathematics.
 This is because these proofs happen on a low level of abstraction, where details and definitions of mathematical objects are still important.
 The point of category theory is to explore what facts we can prove on this higher level of abstraction.
 Indeed, we will soon see that groups, topological spaces, and vector spaces are all examples of categories, and that the statement ``inverses are unique'' is, in fact, a category-theoretical result.
-\qed
-\end{ex}
 
-One interesting application of category theory is in the Haskell programming language.
-There are many concepts in Haskell named after constructions in category theory, such as Monads, Monoids, and Functors \cite{haskmooc}.
-The goal of this thesis is to explain why these names actually carry category-theoretical meaning, and are not just invented out of nowhere.
-We will see that it is possible to define a formal category \textbf{Hask} of Haskell's types and functions, and that all of the above constructions have a similarly-named equivalent in category theory.
-
-\section{Basic definitions}
+\section{The definition}
 
 \begin{defn}
 A \textbf{category} $\C$ consists of:
@@ -159,7 +169,7 @@ What this does is effectively ``moves us up'' by a level of abstraction: when di
 This gives us an indication as to why Example \ref{ex:three_statements} makes sense.
 We will formally prove the statement in a theorem later.
 
-Here is one final, quite important example of a category.
+Here is one quite important example of a category.
 
 \begin{ex}
 \label{ex:set}
@@ -167,6 +177,13 @@ Here is one final, quite important example of a category.
 \qed
 \end{ex}
 
+Finally, here is an example of an abstract category constructed manually.
+
+\begin{ex}
+\label{ex:arrow}
+The following picture is a category.
+\qed
+\end{ex}
 
 
 \end{document}
